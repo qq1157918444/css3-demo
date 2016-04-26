@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
+    <title>flex布局</title>
+    <style>
+        *{ margin: 0; padding: 0; }
+        ul{ background-color: #999999; display: -webkit-flex; list-style: none; text-align: center; }
+        ul li{ color: #fff; }
+        ul li:nth-child(1){ background-color: red}
+        ul li:nth-child(2){ background-color: aqua}
+        ul li:nth-child(3){ background-color: black}
+        ul li:nth-child(4){ background-color: brown}
+        ul li:nth-child(5){ background-color: antiquewhite}
+        ul li:nth-child(6){ background-color: blueviolet}
+
+
+        ul.part1 {display: inherit; }
+        ul.block {flex-direction: column  }
+        ul.block li{color: #fff;background-color: #999999;border-bottom: 1px solid #ff0000;text-align: left;padding: 10px;}
+
+        ul.part2 li{  }
+
+        ul.part3 li{  flex: 1;}
+
+        ul.part4 li:nth-child(1){  flex: 1;}
+        ul.part4 li:nth-child(2){  flex: 2;}
+        ul.part4 li:nth-child(3){  flex: 3;}
+        ul.part4 li:nth-child(4){  flex: 4;}
+
+        ul.part5 li:nth-child(1){  width: 100px}
+        ul.part5 li:nth-child(2){  flex: 1;}
+        ul.part5 li:nth-child(3){  flex: 2;}
+        ul.part5 li:nth-child(4){  flex: 3;}
+
+        ul.part6 li:nth-child(1){  width: 100px;margin-right: 10px;}
+        ul.part6 li:nth-child(2){  flex: 1;}
+        ul.part6 li:nth-child(3){  flex: 2;}
+        ul.part6 li:nth-child(4){  width: 50px;margin-left: 20px;}
+
+        ul.part7 li:nth-child(1){  width: 100px;padding-right: 10px;}
+        ul.part7 li:nth-child(2){  flex: 1;}
+        ul.part7 li:nth-child(3){  flex: 2;}
+        ul.part7 li:nth-child(4){  width: 50px;padding-left: 20px;}
+
+        ul.part8 li:nth-child(1){  width: 100px;border: 5px solid #5b5e62;}
+        ul.part8 li:nth-child(2){  flex: 1;}
+        ul.part8 li:nth-child(3){  flex: 2;}
+        ul.part8 li:nth-child(4){  width: 50px;border: 5px solid #5b5e62;}
+
+        ul.part9 li:nth-child(1){  width: 100px;border: 5px solid #5b5e62;padding: 10px;margin: 8px;}
+        ul.part9 li:nth-child(2){  flex: 1;}
+        ul.part9 li:nth-child(3){  flex: 2;}
+        ul.part9 li:nth-child(4){  width: 50px;border: 5px solid #5b5e62;padding: 10px;margin: 5px;}
+
+        ul.part10{flex-direction: row;}
+        ul.part11{flex-direction: row-reverse;}
+        ul.part12{flex-direction: column}
+        ul.part13{flex-direction: column-reverse;}
+
+        ul.part14{-webkit-flex-wrap: nowrap;width: 400px;}
+        ul.part14 li:nth-child(1){  width: 50px;}
+        ul.part14 li:nth-child(2){  width: 100px;}
+        ul.part14 li:nth-child(3){  width: 200px;}
+        ul.part14 li:nth-child(4){  width: 300px;}
+
+        ul.part15{-webkit-flex-wrap: wrap;width: 400px;}
+        ul.part15 li:nth-child(1){  width: 50px;}
+        ul.part15 li:nth-child(2){  width: 100px;}
+        ul.part15 li:nth-child(3){  width: 200px;}
+        ul.part15 li:nth-child(4){  width: 300px;}
+
+        ul.part16{-webkit-flex-wrap: wrap-reverse;width: 400px;}
+        ul.part16 li:nth-child(1){  width: 50px;}
+        ul.part16 li:nth-child(2){  width: 100px;}
+        ul.part16 li:nth-child(3){  width: 200px;}
+        ul.part16 li:nth-child(4){  width: 300px;}
+
+        ul.part17{flex-flow: row nowrap;width: 400px;}
+        ul.part17 li:nth-child(1){  width: 50px;}
+        ul.part17 li:nth-child(2){  width: 100px;}
+        ul.part17 li:nth-child(3){  width: 200px;}
+        ul.part17 li:nth-child(4){  width: 300px;}
+
+        ul.part18{flex-flow: row wrap;width: 400px;}
+        ul.part18 li:nth-child(1){  width: 50px;}
+        ul.part18 li:nth-child(2){  width: 100px;}
+        ul.part18 li:nth-child(3){  width: 200px;}
+        ul.part18 li:nth-child(4){  width: 300px;}
+
+        ul.part19{flex-flow: row-reverse nowrap;width: 400px;}
+        ul.part19 li:nth-child(1){  width: 50px;}
+        ul.part19 li:nth-child(2){  width: 100px;}
+        ul.part19 li:nth-child(3){  width: 200px;}
+        ul.part19 li:nth-child(4){  width: 300px;}
+
+        ul.part20{flex-flow: row-reverse wrap;width: 400px;}
+        ul.part20 li:nth-child(1){  width: 50px;}
+        ul.part20 li:nth-child(2){  width: 100px;}
+        ul.part20 li:nth-child(3){  width: 200px;}
+        ul.part20 li:nth-child(4){  width: 300px;}
+
+        ul.part21{justify-content: flex-start;width: 300px;}
+        ul.part21 li{ width: 100px;}
+
+        ul.part22{justify-content: flex-end;width: 300px;}
+        ul.part22 li{ width: 100px;}
+
+        ul.part23{justify-content: center;width: 300px;}
+        ul.part23 li{ width: 100px;}
+
+        ul.part24{justify-content: space-between;width: 300px;}
+        ul.part24 li{ width: 100px;}
+
+        ul.part25{justify-content: space-around;width: 300px;}
+        ul.part25 li{ width: 100px;}
+
+        ul.part26{width: 300px;height: 100px;}
+        ul.part26 li{-webkit-flex-wrap: wrap;word-wrap: break-word;align-self: flex-start; width: 100px;}
+
+        ul.part27{width: 300px;height: 100px;}
+        ul.part27 li{align-self: flex-end; width: 100px;-webkit-flex-wrap: wrap;word-wrap: break-word;}
+
+        ul.part28{width: 300px;height: 100px;}
+        ul.part28 li{-webkit-flex-wrap: wrap;word-wrap: break-word;align-self: center; width: 100px;}
+
+        ul.part29{width: 300px;height: 100px;}
+        ul.part29 li{-webkit-flex-wrap: wrap;word-wrap: break-word;align-self: auto; width: 100px;}
+
+        ul.part30{width: 300px;height: 100px;}
+        ul.part30 li{-webkit-flex-wrap: wrap;word-wrap: break-word;align-self: baseline; width: 100px;}
+
+        ul.part31{width: 300px;height: 100px;}
+        ul.part31 li{-webkit-flex-wrap: wrap;word-wrap: break-word;align-self: stretch; width: 100px;}
+
+        ul.part32{width: 300px;height: 100px;align-items: flex-start}
+        ul.part32 li{-webkit-flex-wrap: wrap;word-wrap: break-word;width: 100px;}
+
+        ul.part33{width: 300px;height: 100px;align-items: flex-end}
+        ul.part33 li{-webkit-flex-wrap: wrap;word-wrap: break-word;width: 100px;}
+
+        ul.part34{width: 300px;height: 100px;align-items: center}
+        ul.part34 li{-webkit-flex-wrap: wrap;word-wrap: break-word;width: 100px; max-height: 40px; overflow: hidden;}
+
+        ul.part35{width: 300px;height: 100px;align-items: auto}
+        ul.part35 li{-webkit-flex-wrap: wrap;word-wrap: break-word;width: 100px;}
+
+        ul.part36{width: 300px;height: 100px;align-items: baseline}
+        ul.part36 li{-webkit-flex-wrap: wrap;word-wrap: break-word;width: 100px;}
+
+        ul.part37{width: 300px;height: 100px;align-items: stretch}
+        ul.part37 li{-webkit-flex-wrap: wrap;word-wrap: break-word;width: 100px;}
+
+        ul.part38{width: 300px;height: 100px;align-content: flex-start;-webkit-flex-wrap: wrap}
+        ul.part38 li{-webkit-flex-wrap: wrap;word-wrap: break-word;width: 100px;}
+
+        ul.part39{width: 300px;height: 100px;align-items: flex-start;-webkit-flex-wrap: wrap}
+        ul.part39 li{-webkit-flex-wrap: wrap;word-wrap: break-word;width: 100px;}
+
+        ul.part40{width: 300px;height: 100px;align-content: flex-end;-webkit-flex-wrap: wrap}
+        ul.part40 li{-webkit-flex-wrap: wrap;word-wrap: break-word;width: 100px;}
+
+        ul.part41{width: 300px;height: 100px;align-items: flex-end;-webkit-flex-wrap: wrap}
+        ul.part41 li{-webkit-flex-wrap: wrap;word-wrap: break-word;width: 100px;}
+
+        ul.part42{width: 300px;height: 100px;align-items: center;-webkit-flex-wrap: wrap}
+        ul.part42 li{-webkit-flex-wrap: wrap;word-wrap: break-word;width: 100px;}
+
+        ul.part43{width: 300px;height: 100px;align-items: center;-webkit-flex-wrap: wrap}
+        ul.part43 li{-webkit-flex-wrap: wrap;word-wrap: break-word;width: 100px;}
+
+        ul.part44{width: 300px;height: 100px;align-items: auto;-webkit-flex-wrap: wrap}
+        ul.part44 li{-webkit-flex-wrap: wrap;word-wrap: break-word;width: 100px;}
+
+        ul.part45{width: 300px;height: 100px;align-items: auto;-webkit-flex-wrap: wrap}
+        ul.part45 li{-webkit-flex-wrap: wrap;word-wrap: break-word;width: 100px;}
+
+        ul.part46{width: 300px;height: 100px;align-items: baseline;-webkit-flex-wrap: wrap}
+        ul.part46 li{-webkit-flex-wrap: wrap;word-wrap: break-word;width: 100px;}
+
+        ul.part47{width: 300px;height: 100px;align-items: baseline;-webkit-flex-wrap: wrap}
+        ul.part47 li{-webkit-flex-wrap: wrap;word-wrap: break-word;width: 100px;}
+
+        ul.part48{width: 300px;height: 100px;align-items: stretch;-webkit-flex-wrap: wrap}
+        ul.part48 li{-webkit-flex-wrap: wrap;word-wrap: break-word;width: 100px;}
+
+        ul.part49{width: 300px;height: 100px;align-items: stretch;-webkit-flex-wrap: wrap}
+        ul.part49 li{-webkit-flex-wrap: wrap;word-wrap: break-word;width: 100px;}
+
+        ul.part50{width: 300px;height: 100px;}
+        ul.part50 li{flex: 1}
+        ul.part50 li:nth-child(2){order: -1;}
+
+        ul.part51{
+            width: 100%;
+            height: 50px;
+            ;
+        }
+        ul.part51 li{flex: 1}
+
+
+
+    </style>
+</head>
+<body>
+<h1>父元素：</h1>
+<ul class="block">
+    <li>display: -webkit-flex; --定义使用flex布局</li>
+    <li>flex-direction: row|row-reverse|column|column-reverse; --子元素的方向</li>
+    <li>-webkit-flex-wrap: nowrap|wrap|wrap-reverse|nowrap-reverse; --子元素的换行</li>
+    <li>flex-flow: row nowrap|row wrap|column wrap-reverse|column nowrap-reverse; --子元素的方向，换行混合使用</li>
+    <li>justify-content: flex-start|flex-end|center|space-between|space-around; --子元素的位置</li>
+    <li>align-items: flex-start|flex-end|center|space-between|space-around; --子元素的位置</li>
+</ul>
+<h1>子元素：</h1>
+<ul class="block">
+    <li>flex;1 </li>
+    <li>align-self:flex-start|flex-end|center|auto|baseline|stretch--子元素的位置 </li>
+    <li>order:-1--指定子元素的位置 </li>
+</ul>
+
+<h1>示例</h1>
+<ul class=" part51 ">
+    <li>首页</li>
+    <li>小说小说小说小说小说小说</li>
+    <li>电影</li>
+    <li>音乐</li>
+    <li>新闻</li>
+</ul>
+
+<h1>50：设置特定子元素位置:order:-1</h1>
+<ul class=" part50 ">
+    <li>a</li><li>b</li><li>c</li><li>d</li><li>e</li><li>f</li>
+</ul>
+
+<h1>49：父元素设置子元素位置:align-items:stretch</h1>
+<ul class=" part49 ">
+    <li>a</li><li>b</li><li>c</li><li>d</li><li>e</li><li>f</li>
+</ul>
+
+<h1>48：父元素设置子元素位置:align-content:stretch</h1>
+<ul class=" part48">
+    <li>a</li><li>b</li><li>c</li><li>d</li><li>e</li><li>f</li>
+</ul>
+
+<h1>47：父元素设置子元素位置:align-items:baseline</h1>
+<ul class=" part47">
+    <li>a</li><li>b</li><li>c</li><li>d</li><li>e</li><li>f</li>
+</ul>
+
+<h1>46：父元素设置子元素位置:align-content:baseline</h1>
+<ul class=" part46 ">
+    <li>a</li><li>b</li><li>c</li><li>d</li><li>e</li><li>f</li>
+</ul>
+<h1>45：父元素设置子元素位置:align-items:auto</h1>
+<ul class=" part45 ">
+    <li>a</li><li>b</li><li>c</li><li>d</li><li>e</li><li>f</li>
+</ul>
+
+<h1>44：父元素设置子元素位置:align-content:auto</h1>
+<ul class=" part44 ">
+    <li>a</li><li>b</li><li>c</li><li>d</li><li>e</li><li>f</li>
+</ul>
+
+<h1>43：父元素设置子元素位置:align-items:center</h1>
+<ul class=" part43 ">
+    <li>a</li><li>b</li><li>c</li><li>d</li><li>e</li><li>f</li>
+</ul>
+
+<h1>42：父元素设置子元素位置:align-content:center</h1>
+<ul class=" part42 ">
+    <li>a</li><li>b</li><li>c</li><li>d</li><li>e</li><li>f</li>
+</ul>
+
+<h1>41：父元素设置子元素位置:align-items:flex-end</h1>
+<ul class=" part41 ">
+    <li>a</li><li>b</li><li>c</li><li>d</li><li>e</li><li>f</li>
+</ul>
+
+<h1>40：父元素设置子元素位置:align-content:flex-end</h1>
+<ul class=" part40 ">
+    <li>a</li><li>b</li><li>c</li><li>d</li><li>e</li><li>f</li>
+</ul>
+
+<h1>39：父元素设置子元素位置:align-items:flex-start</h1>
+<ul class=" part39 ">
+    <li>a</li><li>b</li><li>c</li><li>d</li><li>e</li><li>f</li>
+</ul>
+
+<h1>38：父元素设置子元素位置:align-content:flex-start</h1>
+<ul class=" part38 ">
+    <li>a</li><li>b</li><li>c</li><li>d</li><li>e</li><li>f</li>
+</ul>
+
+<h1>37：父元素设置子元素位置:align-items:stretch</h1>
+<ul class=" part37 ">
+    <li>width:100pxwidth:100pxwidth:100pxwidth:100pxwidth:100px</li>
+</ul>
+
+<h1>36：父元素设置子元素位置:align-items:baseline</h1>
+<ul class=" part36 ">
+    <li>width:100pxwidth:100pxwidth:100pxwidth:100pxwidth:100px</li>
+</ul>
+
+<h1>35：父元素设置子元素位置:align-items:auto</h1>
+<ul class=" part35 ">
+    <li>width:100pxwidth:100pxwidth:100pxwidth:100pxwidth:100px</li>
+</ul>
+
+<h1>34：父元素设置子元素位置:align-items:center</h1>
+<ul class=" part34 ">
+    <li>width:100pxwidth:100pxwidth:100pxwidth:100pxwidth:100px</li>
+</ul>
+
+<h1>33：父元素设置子元素位置:align-items:flex-end</h1>
+<ul class=" part33 ">
+    <li>width:100pxwidth:100pxwidth:100pxwidth:100pxwidth:100px</li>
+</ul>
+
+<h1>32：父元素设置子元素位置:align-items:flex-start</h1>
+<ul class=" part32 ">
+    <li>width:100pxwidth:100pxwidth:100pxwidth:100pxwidth:100px</li>
+</ul>
+
+<h1>31：子元素位置:align-self:stretch</h1>
+<ul class=" part31 ">
+    <li>width:100pxwidth:100pxwidth:100pxwidth:100pxwidth:100px</li>
+</ul>
+
+<h1>30：子元素位置:align-self:baseline</h1>
+<ul class=" part30 ">
+    <li>width:100pxwidth:100pxwidth:100pxwidth:100pxwidth:100px</li>
+</ul>
+
+<h1>29：子元素位置:align-self:auto</h1>
+<ul class=" part29 ">
+    <li>width:100pxwidth:100pxwidth:100pxwidth:100pxwidth:100px</li>
+</ul>
+
+<h1>28：子元素位置:align-self:center</h1>
+<ul class=" part28 ">
+    <li>width:100pxwidth:100pxwidth:100pxwidth:100pxwidth:100px</li>
+</ul>
+
+<h1>27：子元素位置:align-self:flex-end</h1>
+<ul class=" part27 ">
+    <li>width:100pxwidth:100pxwidth:100pxwidth:100pxwidth:100px</li>
+</ul>
+
+<h1>26：子元素位置:align-self:flex-start</h1>
+<ul class=" part26 ">
+    <li>width:100pxwidth:100pxwidth:100pxwidth:100pxwidth:100px</li>
+</ul>
+
+<h1>25：居左:justiyf-content:space-around</h1>
+<ul class=" part25 ">
+    <li>width:100px</li>
+    <li>width:100px</li>
+</ul>
+
+<h1>24：中间空白:justiyf-content:space-between</h1>
+<ul class=" part24 ">
+    <li>width:100px</li>
+    <li>width:100px</li>
+</ul>
+
+<h1>23：居中:justiyf-content:center</h1>
+<ul class=" part23 ">
+    <li>width:100px</li>
+    <li>width:100px</li>
+</ul>
+
+<h1>22：居右:justiyf-content:flex-end</h1>
+<ul class=" part22 ">
+    <li>width:100px</li>
+    <li>width:100px</li>
+</ul>
+
+<h1>21：居左:justiyf-content:flex-start，默认</h1>
+<ul class=" part21 ">
+    <li>width:100px</li>
+    <li>width:100px</li>
+</ul>
+
+<h1>20：混合：右到左，换行：flex-flow: row-reverse wrap</h1>
+<ul class=" part20 ">
+    <li>width:50px</li>
+    <li>width:100px</li>
+    <li>width:200px</li>
+    <li>width:300px;</li>
+</ul>
+
+<h1>19：混合：右到左，不换行：flex-flow: row-reverse nowrap</h1>
+<ul class=" part19 ">
+    <li>width:50px</li>
+    <li>width:100px</li>
+    <li>width:200px</li>
+    <li>width:300px;</li>
+</ul>
+
+<h1>18：混合：左到右，换行：flex-flow: row wrap</h1>
+<ul class=" part18 ">
+    <li>width:50px</li>
+    <li>width:100px</li>
+    <li>width:200px</li>
+    <li>width:300px;</li>
+</ul>
+
+<h1>17：混合：左到右，不换行,默认:flex-flow: row nowrap</h1>
+<ul class=" part17 ">
+    <li>width:50px</li>
+    <li>width:100px</li>
+    <li>width:200px</li>
+    <li>width:300px;</li>
+</ul>
+
+<h1>16：换行，反方向</h1>
+<ul class=" part16 ">
+    <li>-webkit-flex-wrap: wrap-reverse;width:50px</li>
+    <li>width:100px</li>
+    <li>width:200px</li>
+    <li>width:300px;</li>
+</ul>
+
+<h1>15：换行,正反向</h1>
+<ul class=" part15 ">
+    <li>-webkit-flex-wrap: wrap;width:50px</li>
+    <li>width:100px</li>
+    <li>width:200px</li>
+    <li>width:300px;</li>
+</ul>
+
+<h1>14：不换行，正反向，默认</h1>
+<ul class="part14 ">
+    <li>-webkit-flex-wrap: nowrap;width:50px</li>
+    <li>width:100px</li>
+    <li>width:200px</li>
+    <li>width:300px;</li>
+</ul>
+
+<h1>13：带边框，外边距，内边距，固定分配，从下到上方向</h1>
+<ul class="part9 part13 ">
+    <li>width:100px<br/>border:5px;<br>flex-direction: column-reverse</li>
+    <li>flex:1</li>
+    <li>flex:2</li>
+    <li>width:50px;<br>border:5px;</li>
+</ul>
+
+<h1>12：带边框，外边距，内边距，固定分配，从上到下方向</h1>
+<ul class="part9 part12 ">
+    <li>width:100px<br/>border:5px;;<br>flex-direction: column</li>
+    <li>flex:1</li>
+    <li>flex:2</li>
+    <li>width:50px;<br>border:5px;</li>
+</ul>
+
+<h1>11：带边框，外边距，内边距，固定分配，反方向方向</h1>
+<ul class="part9 part11 ">
+    <li>width:100px<br/>border:5px;;<br>flex-direction: row-reverse</li>
+    <li>flex:1</li>
+    <li>flex:2</li>
+    <li>width:50px;<br>border:5px;</li>
+</ul>
+
+<h1>10：带边框，外边距，内边距，固定分配，正方向，默认</h1>
+<ul class="part9 part10 ">
+    <li>width:100px<br/>border:5px;;<br>flex-direction: row</li>
+    <li>flex:1</li>
+    <li>flex:2</li>
+    <li>width:50px;<br>border:5px;</li>
+</ul>
+
+<h1>9：带边框，外边距，内边距，固定分配</h1>
+<ul class="part9">
+    <li>width:100px<br/>border:5px;</li>
+    <li>flex:1</li>
+    <li>flex:2</li>
+    <li>width:50px;<br>border:5px;</li>
+</ul>
+
+<h1>8：带边框固定分配</h1>
+<ul class="part8">
+    <li>width:100px<br/>border:5px;</li>
+    <li>flex:1</li>
+    <li>flex:2</li>
+    <li>width:50px;<br>border:5px;</li>
+</ul>
+
+<h1>7：带内边距固定分配</h1>
+<ul class="part7">
+    <li>width:100px<br/>padding-right:10px;</li>
+    <li>flex:1</li>
+    <li>flex:2</li>
+    <li>width:50px;<br>padding-left:20px;</li>
+</ul>
+
+    <h1>6：带外边距固定分配</h1>
+    <ul class="part6">
+        <li>width:100px<br/>margin-right:10px;</li>
+        <li>flex:1</li>
+        <li>flex:2</li>
+        <li>width:50px;<br>margin-left:20px;</li>
+    </ul>
+
+    <h1>5：按固定分配</h1>
+    <ul class="part5">
+        <li>width:100px</li>
+        <li>flex:1</li>
+        <li>flex:2</li>
+        <li>flex:3</li>
+    </ul>
+
+    <h1>4：按比例分配</h1>
+    <ul class="part4">
+        <li>flex:1</li>
+        <li>flex:2</li>
+        <li>flex:3</li>
+        <li>flex:4</li>
+    </ul>
+
+    <h1>3：平均分配，子元素有写flex</h1>
+    <ul class="part3">
+        <li>flex:1</li>
+        <li>flex:1</li>
+        <li>flex:1</li>
+        <li>flex:1</li>
+    </ul>
+
+    <h1>2：平均分配,子元素没有写flex</h1>
+    <ul class="part2">
+        <li>li:1</li>
+        <li>li:1</li>
+        <li>li:1</li>
+        <li>li:1</li>
+    </ul>
+
+    <h1>1：没有分配</h1>
+    <ul class="part1">
+        <li>li:1</li>
+        <li>li:1</li>
+        <li>li:1</li>
+        <li>li:1</li>
+    </ul>
+
+
+
+
+</body>
+</html>

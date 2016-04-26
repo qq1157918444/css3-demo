@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>明星海报墙</title>
+    <link rel="stylesheet" href="poster.css">
+</head>
+<body onselectstart="return false;">
+
+<!--step2:模板编写-->
+<div class="wrap" id="wrap">
+    <!--photo:负责平移和旋转-->
+    <div class="photo photo_front" onclick="turn(this)" id="photo_{{index}}">
+        <!--photo_wrap:负责3D翻转,正反面切换-->
+        <div class="photo-wrap">
+            <!--正面-->
+            <div class="side side-front">
+                <p class="image">
+                    <img src="./img/{{img}}.jpg" />
+                </p>
+                <p class="caption">{{caption}}</p>
+            </div>
+            <!--反面-->
+            <div class="side side-back">
+                <p class="desc">{{desc}}描述信息</p>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<script src="data.js"></script>
+<script src="poster.js"></script>
+</body>
+</html>

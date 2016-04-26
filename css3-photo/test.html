@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>明星海报墙</title>
+    <style>
+        *{margin: 0;padding: 0;}
+        body{
+            background-color: #fff;
+            color: #555;
+            font-family: "Avenir Next";
+            font-size: 14px;
+            -webkit-font-smoothing:antialiased;
+        }
+        .wrap{
+            width: 100%;
+            height: 600px;
+            position: absolute;
+            top:50%;
+            margin-top: -300px;
+            background-color: #333;
+            overflow: hidden;
+            -webkit-perspective:800px;/*子元素获得3D效果，设置子元素距离视图的位置*/
+        }
+        /*海报样式*/
+        .photo{
+            width: 260px;
+            height: 320px;
+            position: absolute;
+            z-index: 1;
+            box-shadow: 0 0 1px rgba(0,0,0,.01);
+        }
+        .photo .side{
+            width: 100%;
+            height: 100%;
+            background-color: #eee;
+            position: absolute;
+            top: 0;
+            left: 0;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        .photo .side-front{}
+        .photo .side-front .image{
+            width: 100%;
+            height: 250px;
+            line-height: 250px;
+            overflow: hidden;
+        }
+        .photo .side-front .image img{
+            width: 100%;
+        }
+        .photo .side-front .caption{
+            text-align: center;
+            font-size: 16px;
+            line-height: 50px;
+        }
+        .photo .side-back{}
+        .photo .side-back .desc{
+            font-size: 18px;
+            color: #333;
+            line-height: 1.5em;
+        }
+        /*当前选中的海报样式*/
+        .photo-center{
+            left: 50%;
+            top: 50%;
+            margin: -160px 0 0 -130px ;
+            z-index: 999;
+        }
+        /*负责旋转*/
+        .photo-wrap{
+            position: absolute;;
+            width: 100%;
+            height: 100%;
+            -webkit-transform-style: preserve-3d;/*支持子元素的3D效果*/
+            -webkit-transition: all .6;
+        }
+        .photo-wrap .side-front{
+            -webkit-transform: rotateY(0deg);
+            transform: rotateY(0deg);
+        }
+        .photo-wrap .side-back{
+            -webkit-transform: rotateY(180deg);
+            transform: rotateY(180deg);
+        }
+        .photo-wrap .side{
+            -webkit-fontface-visibility:hidden;/*当元素不面向屏幕隐藏*/
+        }
+        .photo_front .photo-wrap{
+            -webkit-transform: rotateY(0deg);
+        }
+        .photo_back .photo-wrap{
+            -webkit-transform: rotateY(180deg);
+        }
+    </style>
+</head>
+<body onselectstart="return false">
+
+<div class="wrap">
+    <!--photo:负责平移和旋转-->
+    <div class="photo photo-center photo_back">
+        <!--photo_wrap:负责3D翻转,正反面切换-->
+        <div class="photo-wrap">
+            <!--正面-->
+            <div class="side side-front">
+                <p class="image">
+                    <img src="./img/anglebaby.jpg" alt="">
+                </p>
+                <p class="caption">anglebaby</p>
+            </div>
+            <!--反面-->
+            <div class="side side-back">
+                <p class="desc">anglebaby描述信息</p>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>

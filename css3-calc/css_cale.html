@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>css中cale()函数的使用</title>
+
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <style type="text/css">
+
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .wrapper{
+            width: 100%;
+            height: 205px;
+            margin: 20px auto;
+            background-color: #eee;
+            border: 1px solid #666;
+            overflow: hidden;
+        }
+        ul{
+            list-style: none;
+            overflow: hidden;
+            margin-bottom: -5px;
+            transform: translateY(-0px);
+            transition: all 0.6s ease-in-out;
+        }
+        ul li{
+            float: left;
+            background: #999;
+            color: #333;
+            height: 100px;
+            text-align: center;
+            font-size: 16px;
+            line-height: 100px;
+            width: calc((100% - 5px*2)/3);
+            margin-right: 5px;
+            margin-bottom: 5px;
+
+        }
+        ul li:nth-child(3n+3){margin-right: 0;}
+        p{
+            width: auto;
+            height: 20px;
+        }
+        button{
+            width: 100px;height: 50px;line-height: 50px;font-size: 16px;color: #fff;background-color: #666;border: 0;outline: 0;border-radius: 5px;cursor: pointer;
+        }
+        button.disabled{color: #aaa;background-color: #eee;cursor: auto}
+
+    </style>
+</head>
+<body>
+
+<div class="wrapper">
+    <ul id="js_list"><li>1</li><li>2</li><li>3</li><li>4</li><li>5</li><li>6</li><li>7</li><li>8</li><li>9</li><li>10</li><li>11</li><li>12</li><li>13</li></ul>
+</div>
+<p>改变ul的transform: translateY(-0px);可以使内容上下滑动</p>
+<button id="js_prev">上一页</button>
+<button id="js_next">下一页</button>
+<script>
+
+    var $dom = {
+        $list:$("#js_list"),//ul
+        $prev:$("#js_prev"),//上一页
+        $next:$("#js_next")//下一页
+    };
+    var one_page_height = (parseInt($dom.$list.find("li").height()) +parseInt($dom.$list.find("li").css("margin-bottom")))*2;//一屏高度
+    var full_page_height = $dom.$list.height();//内容高度
+    var totalPage = Math.ceil(full_page_height/one_page_height);//一共多少页
+    var page = 1;
+    init();
+    $dom.$prev.click(function(){
+        if(page > 1){
+            $dom.$list.css({"transform":"translateY(-"+one_page_height*(page-2)+"px)"});
+            page--;
+        }
+        init();
+    });
+    $dom.$next.click(function(){
+        if(page < totalPage){
+            $dom.$list.css({"transform":"translateY(-"+one_page_height*page+"px)"});
+            page++;
+        }
+        init();
+    });
+    function init(){
+        if(page == 1){
+            $dom.$prev.addClass("disabled");
+        }else if(page == totalPage){
+            $dom.$next.addClass("disabled");
+        }else{
+            $dom.$prev.removeClass("disabled");
+            $dom.$next.removeClass("disabled");
+        }
+    }
+
+
+</script>
+</body>
+</html>
